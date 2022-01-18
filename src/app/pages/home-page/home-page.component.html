@@ -1,0 +1,8 @@
+<div *ngIf='!fireService.user'>
+    Loading...
+</div>
+
+<div *ngIf='fireService.user'>
+    <input [(ngModel)]="fireService.user.name" (ngModelChange)="updateUser()" placeholder="my nickname" type="text" />
+    <button routerLink="binis">Jogar!</button>
+</div>

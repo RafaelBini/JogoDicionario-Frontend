@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.countdown_container{
+    position: fixed;
+    right: 50%;
+    top: 2px;
+    padding: 4px;
+    box-sizing: border-box;
+    font-size: 23px;
+}

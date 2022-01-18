@@ -1,0 +1,34 @@
+<div *ngIf="!room">
+    Loading.....
+</div>
+<div *ngIf="room">
+    Step {{room.step}}/3 (Round {{room.round}}/{{room.maxRounds}})
+
+
+
+    <div>
+        <app-step0 [room]="room" *ngIf="room.step == 0"></app-step0>
+        <app-step1 [room]="room" *ngIf="room.step == 1"></app-step1>
+        <app-step2 [room]="room" *ngIf="room.step == 2"></app-step2>
+        <app-step3 [room]="room" *ngIf="room.step == 3"></app-step3>
+    </div>
+
+    <div>
+        <table border="1">
+            <tr>
+                <td>User</td>
+                <td>Score</td>
+                <td>Inativo</td>
+            </tr>
+            <tr *ngFor="let user of room.users">
+                <td>{{user.name}}</td>
+                <td>{{user.score}}</td>
+                <td>{{user.inactive}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="countdown > 0" class='countdown_container'>
+    {{countdown}}
+</div>

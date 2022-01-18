@@ -1,0 +1,10 @@
+.definition_container{
+    cursor: pointer;
+}
+.definition_container:hover{
+    background-color: whitesmoke;
+}
+
+.definition_selected{
+    background-color: rgb(59, 164, 199);
+}

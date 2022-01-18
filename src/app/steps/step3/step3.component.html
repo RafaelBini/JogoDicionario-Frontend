@@ -1,0 +1,14 @@
+<div *ngIf="room">
+
+    <div *ngFor="let user of room.users">
+        <table>
+            <tr *ngFor="let voter of user.voters">
+                <td>{{voter.userName}}</td>
+                <td>votou na definição de</td>
+                <td>{{user.name}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>

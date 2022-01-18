@@ -1,4 +1,6 @@
+import { ApiService } from './services/api.service';
 import { Component } from '@angular/core';
+import { FireService } from './services/fire.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'JogoDicionario-Frontend';
+
+  constructor(
+    fireService: FireService,
+    apiService: ApiService
+  ) {
+    apiService.registerDelta();
+  }
+
 }
