@@ -2,6 +2,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Room } from 'src/app/models/room';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-step2',
@@ -12,14 +13,17 @@ export class Step2Component implements OnInit {
 
   constructor(
     private apiSevice: ApiService,
-    private snack: MatSnackBar
+    private snack: MatSnackBar,
+    private cookieService: CookieService
   ) { }
 
   @Input() room: Room | undefined;
   selectedDefinitionText: string = '';
   finished = false;
+  correctDefinition = false;
 
   ngOnInit(): void {
+    if (this.cookieService.get('correctDefinition')) this.correctDefinition = true;
   }
 
   selectDefinition(definitionText: string) {
@@ -38,7 +42,10 @@ export class Step2Component implements OnInit {
   }
 
   getDefinitions() {
-    return this.room?.definitions.filter(d => d.text != this.apiSevice.myDefinition).sort((a, b) => a.text > b.text ? -1 : 1)
+    var myDefinition = this.cookieService.get('myDefinition')
+    var set = new Set(this.room?.definitions.map(d => d.text));
+    var arryNoDup = [...set];
+    return arryNoDup.map(a => { return { text: a } }).filter(d => d.text != myDefinition)
   }
 
 }

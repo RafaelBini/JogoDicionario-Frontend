@@ -15,8 +15,6 @@ export class ApiService {
   ) { }
 
   private delta: number = 0;
-  public myDefinition: string = '';
-  public myVote: string = '';
 
   async registerDelta() {
     var resp = await firstValueFrom(this.http.get<any>(`${environment.apiHost}/timing`))
@@ -34,12 +32,18 @@ export class ApiService {
   }
 
   startRoom(roomId: string) {
-    return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/start`, { roomId }));
+    if (!this.fireService.user) return;
+    return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/start`, { roomId, userId: this.fireService.user.id }));
   }
 
   enterRoom(roomId: string) {
     if (!this.fireService.user) return;
     return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/enter`, { roomId, userId: this.fireService.user.id }));
+  }
+
+  leaveRoom(roomId: string) {
+    if (!this.fireService.user) return;
+    return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/leave`, { roomId, userId: this.fireService.user.id }));
   }
 
   keepActive(roomId: string) {

@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { RemovedDialogComponent } from './../../dialogs/removed-dialog/removed-dialog.component';
 import { InactiveDialogComponent } from './../../dialogs/inactive-dialog/inactive-dialog.component';
 import { EditMeComponent } from './../../dialogs/edit-me/edit-me.component';
@@ -22,7 +23,8 @@ export class RoomPageComponent implements OnInit, OnDestroy {
     private router: Router,
     private fireService: FireService,
     private apiService: ApiService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+
   ) { }
 
   public room?: Room;
@@ -71,6 +73,7 @@ export class RoomPageComponent implements OnInit, OnDestroy {
         })
       }
 
+
     })
 
     this.startCountdown();
@@ -94,6 +97,16 @@ export class RoomPageComponent implements OnInit, OnDestroy {
   getMeAtRoom() {
     if (!this.room) return undefined;
     return this.room?.users.find(u => u.hash == this.fireService.getMyHash())
+  }
+
+  async leaveRoom() {
+    await this.router.navigate(['']);
+    setTimeout(() => {
+      this.apiService.leaveRoom(this.room?.id || '');
+    }, 1500);
+
+
+
   }
 
 }

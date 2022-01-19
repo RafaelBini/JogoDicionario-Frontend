@@ -1,11 +1,24 @@
 <div *ngIf="room">
 
-    <div *ngFor="let user of room.users">
+    <div>
+        Você votou em {{getMyVotedUserName()}}
+    </div>
+
+    <div>
         <table>
-            <tr *ngFor="let voter of user.voters">
-                <td>{{voter.userName}}</td>
-                <td>votou na definição de</td>
-                <td>{{user.name}}</td>
+            <tr>
+                <td>Criador</td>
+                <td>Definição</td>
+                <td>Votos</td>
+            </tr>
+            <tr *ngFor="let definition of room.definitions">
+                <td>{{definition.userName}}</td>
+                <td>{{definition.text}}</td>
+                <td>
+                    <div *ngFor="let voter of getVoters(definition.userName)">
+                        {{voter.name}}
+                    </div>
+                </td>
             </tr>
         </table>
     </div>

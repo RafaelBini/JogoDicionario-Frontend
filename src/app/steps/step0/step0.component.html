@@ -1,1 +1,9 @@
-<button (click)="startRoom()">Iniciar</button>
+<div *ngIf="room">
+    <button *ngIf="amIHost() && room.users.length > 1" (click)="startRoom()">Iniciar</button>
+    <div *ngIf="!amIHost() && room.users.length> 1">
+        Aguardando o {{getHost().name}} iniciar o jogo
+    </div>
+    <div *ngIf="room.users.length <= 1">
+        Aguardando pelo menos mais um jogador para poder iniciar
+    </div>
+</div>

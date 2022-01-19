@@ -19,6 +19,9 @@ import { FormsModule } from '@angular/forms';
 // HTTP
 import { HttpClientModule } from '@angular/common/http'
 
+// Cookie
+import { CookieService } from 'ngx-cookie-service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +34,7 @@ import { Step1Component } from './steps/step1/step1.component';
 import { Step2Component } from './steps/step2/step2.component';
 import { Step3Component } from './steps/step3/step3.component';
 import { Step0Component } from './steps/step0/step0.component';
+import { CorrectDefinitionDialogComponent } from './dialogs/correct-definition-dialog/correct-definition-dialog.component';
 
 const MATERIAL_MODULES = [MatDialogModule, MatSnackBarModule]
 
@@ -45,7 +49,8 @@ const MATERIAL_MODULES = [MatDialogModule, MatSnackBarModule]
     Step1Component,
     Step2Component,
     Step3Component,
-    Step0Component
+    Step0Component,
+    CorrectDefinitionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,7 @@ const MATERIAL_MODULES = [MatDialogModule, MatSnackBarModule]
     HttpClientModule,
     ...MATERIAL_MODULES
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

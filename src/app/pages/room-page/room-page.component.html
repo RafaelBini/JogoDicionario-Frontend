@@ -4,7 +4,7 @@
 <div *ngIf="room">
     Step {{room.step}}/3 (Round {{room.round}}/{{room.maxRounds}})
 
-
+    <button (click)="leaveRoom()">Sair</button>
 
     <div>
         <app-step0 [room]="room" *ngIf="room.step == 0"></app-step0>
@@ -29,6 +29,6 @@
     </div>
 </div>
 
-<div *ngIf="countdown > 0" class='countdown_container'>
+<div *ngIf="countdown > 0 && room?.step != 0" class='countdown_container'>
     {{countdown}}
 </div>
