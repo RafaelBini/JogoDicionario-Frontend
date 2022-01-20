@@ -23,7 +23,6 @@ export class Step1Component implements OnInit {
 
   ngOnInit(): void {
     this.cookieService.delete('correctDefinition', `/${this.room?.id}`);
-    this.cookieService.delete('myDefinition', `/${this.room?.id}`);
   }
 
   async sendDefinition() {
@@ -38,8 +37,9 @@ export class Step1Component implements OnInit {
       this.isDefinitionSent = true;
       const HAS_FINAL = this.myDefinition[this.myDefinition.length - 1].match(/[!\.\?]/g)
       this.myDefinition = `${this.myDefinition[0].toUpperCase()}${this.myDefinition.slice(1)}${HAS_FINAL ? '' : '.'}`
-      var resp = await this.apiService.sendDefinition(this.room?.id || '', this.myDefinition);
       this.cookieService.set('myDefinition', this.myDefinition, new Date().getTime() + (1000 * 60 * 2), `/${this.room?.id}`);
+      this.apiService.myDefinition = this.myDefinition;
+      var resp = await this.apiService.sendDefinition(this.room?.id || '', this.myDefinition);
       if (resp.correctDefinition) {
         this.cookieService.set('correctDefinition', 'true', new Date().getTime() + (1000 * 60 * 2), `/${this.room?.id}`);
       }

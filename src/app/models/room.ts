@@ -6,6 +6,7 @@ export interface Room {
     name: string
     users: any[]
     definitions: any[]
+    messages: any[]
     word: string
     step: number
     stepEndAt: firebase.Timestamp | null

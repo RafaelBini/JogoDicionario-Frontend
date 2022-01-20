@@ -3,6 +3,7 @@
 </div>
 
 <div *ngIf='fireService.user'>
+    <img [src]="fireService.user.imgUrl" (click)="chooseImg()" class="avatar_grande" style="cursor: pointer;">
     <input [(ngModel)]="fireService.user.name" (ngModelChange)="updateUser()" placeholder="my nickname" type="text" />
     <button routerLink="binis">Jogar!</button>
 </div>

@@ -1,3 +1,4 @@
+import { PodiumDialogComponent } from './../../dialogs/podium-dialog/podium-dialog.component';
 import { CookieService } from 'ngx-cookie-service';
 import { RemovedDialogComponent } from './../../dialogs/removed-dialog/removed-dialog.component';
 import { InactiveDialogComponent } from './../../dialogs/inactive-dialog/inactive-dialog.component';
@@ -32,6 +33,7 @@ export class RoomPageComponent implements OnInit, OnDestroy {
 
   public inactiveDialogRef: MatDialogRef<InactiveDialogComponent> | undefined;
   private roomListener: Subscription | undefined;
+  public messageText = ''
 
   async ngOnInit() {
 
@@ -61,12 +63,19 @@ export class RoomPageComponent implements OnInit, OnDestroy {
         this.apiService.enterRoom(roomId);
       }
 
+      if (room.step == 0 && this.room?.step == 3) {
+        this.dialog.open(PodiumDialogComponent, {
+          data: room
+        })
+      }
+
       this.room = room
 
       if (this.getMeAtRoom()?.inactive && !this.inactiveDialogRef) {
 
         this.inactiveDialogRef = this.dialog.open(InactiveDialogComponent, {
-          data: this.room.id
+          data: this.room.id,
+          disableClose: true
         })
         this.inactiveDialogRef.afterClosed().subscribe(() => {
           this.inactiveDialogRef = undefined
@@ -107,6 +116,18 @@ export class RoomPageComponent implements OnInit, OnDestroy {
 
 
 
+  }
+
+
+  messageInputKeyup(event: any) {
+    if (event.key == 'Enter') this.sendMessage()
+  }
+  async sendMessage() {
+    if (!this.messageText) return;
+
+    await this.apiService.sendMessage(this.room?.id || '', this.messageText)
+
+    this.messageText = '';
   }
 
 }

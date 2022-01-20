@@ -28,7 +28,7 @@ export class FireService {
       const newUser = {
         id: resp.user?.uid,
         name: '',
-        imgUrl: '',
+        imgUrl: 'assets/avatars/hipo.png',
         createdAt: firebase.Timestamp.now(),
         lastVisit: firebase.Timestamp.now()
       };
@@ -69,6 +69,7 @@ export class FireService {
         }
       ],
       definitions: [],
+      messages: [],
       word: '',
       step: 0,
       stepEndAt: null,

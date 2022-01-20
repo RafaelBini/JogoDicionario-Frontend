@@ -1,0 +1,9 @@
+<div>
+    Primeiro: {{getOrderedUsers()[0].name}}
+</div>
+<div>
+    Segundo: {{getOrderedUsers()[1].name}}
+</div>
+<div *ngIf="getOrderedUsers()[2]">
+    Terceiro: {{getOrderedUsers()[2].name}}
+</div>

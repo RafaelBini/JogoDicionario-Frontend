@@ -11,3 +11,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     box-sizing: border-box;
     font-size: 23px;
 }
+
+.avatar_pequeno{
+    height: 20x;
+    width: 20px;
+    border-radius: 50%;
+    border: 1px solid darkgreen;
+}
+
+.avatar_medio{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid darkgreen;
+}
+
+.avatar_grande{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}

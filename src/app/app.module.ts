@@ -35,6 +35,8 @@ import { Step2Component } from './steps/step2/step2.component';
 import { Step3Component } from './steps/step3/step3.component';
 import { Step0Component } from './steps/step0/step0.component';
 import { CorrectDefinitionDialogComponent } from './dialogs/correct-definition-dialog/correct-definition-dialog.component';
+import { ChooseAvatarDialogComponent } from './dialogs/choose-avatar-dialog/choose-avatar-dialog.component';
+import { PodiumDialogComponent } from './dialogs/podium-dialog/podium-dialog.component';
 
 const MATERIAL_MODULES = [MatDialogModule, MatSnackBarModule]
 
@@ -50,7 +52,9 @@ const MATERIAL_MODULES = [MatDialogModule, MatSnackBarModule]
     Step2Component,
     Step3Component,
     Step0Component,
-    CorrectDefinitionDialogComponent
+    CorrectDefinitionDialogComponent,
+    ChooseAvatarDialogComponent,
+    PodiumDialogComponent
   ],
   imports: [
     BrowserModule,

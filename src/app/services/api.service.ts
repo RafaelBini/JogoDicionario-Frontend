@@ -15,6 +15,7 @@ export class ApiService {
   ) { }
 
   private delta: number = 0;
+  public myDefinition = '';
 
   async registerDelta() {
     var resp = await firstValueFrom(this.http.get<any>(`${environment.apiHost}/timing`))
@@ -59,6 +60,11 @@ export class ApiService {
   sendVote(roomId: string, text: string) {
     if (!this.fireService.user) return;
     return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/vote`, { roomId, userId: this.fireService.user.id, text }));
+  }
+
+  sendMessage(roomId: string, text: string) {
+    if (!this.fireService.user) return;
+    return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/chat/message`, { roomId, userId: this.fireService.user.id, text }));
   }
 
 }

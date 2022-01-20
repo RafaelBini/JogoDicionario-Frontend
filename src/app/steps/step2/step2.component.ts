@@ -42,7 +42,7 @@ export class Step2Component implements OnInit {
   }
 
   getDefinitions() {
-    var myDefinition = this.cookieService.get('myDefinition')
+    var myDefinition = this.apiSevice.myDefinition || this.cookieService.get('myDefinition')
     var set = new Set(this.room?.definitions.map(d => d.text));
     var arryNoDup = [...set];
     return arryNoDup.map(a => { return { text: a } }).filter(d => d.text != myDefinition)

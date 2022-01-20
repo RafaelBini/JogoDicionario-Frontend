@@ -21,11 +21,24 @@
                 <td>Inativo</td>
             </tr>
             <tr *ngFor="let user of room.users">
-                <td>{{user.name}}</td>
+                <td>
+                    <img [src]="user.imgUrl" class="avatar_pequeno" />
+                    {{user.name}}
+                </td>
                 <td>{{user.score}}</td>
                 <td>{{user.inactive}}</td>
             </tr>
         </table>
+    </div>
+
+    <div>
+        <div *ngFor="let message of room.messages">
+            {{message.userName}}: {{message.text}}
+        </div>
+        <div>
+            <input [(ngModel)]="messageText" (keyup)="messageInputKeyup($event)" type="text" />
+            <button (click)="sendMessage()">Enviar</button>
+        </div>
     </div>
 </div>
 

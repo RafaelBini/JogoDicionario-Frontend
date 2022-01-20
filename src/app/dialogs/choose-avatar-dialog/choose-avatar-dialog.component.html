@@ -1,0 +1,5 @@
+<div class="container">
+    <div *ngFor="let imgUrl of imgUrls" (click)="selectImgUrl(imgUrl)">
+        <img [src]="imgUrl" class="avatar_medio" />
+    </div>
+</div>
