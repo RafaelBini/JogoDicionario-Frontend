@@ -18,8 +18,6 @@ export class PodiumDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getOrderedUsers() {
-    return this.room.users.sort((a, b) => b.score - a.score)
-  }
+
 
 }

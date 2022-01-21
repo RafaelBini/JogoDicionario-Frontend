@@ -1,19 +1,20 @@
 <div *ngIf="room">
-    <div *ngIf="!correctDefinition">
+    <div *ngIf="!correctDefinition" class="main_container">
         <div *ngIf="finished">
             Aguarde os outros jogadores terminarem de votar
         </div>
-        <div *ngIf="!finished">
-            Choose a definition to vote
+        <div *ngIf="!finished" class="title">
+            Tente escolher a definição correta
         </div>
-        <div *ngIf="!finished">
+        <div *ngIf="!finished" class="options_container">
             <div *ngFor="let definition of getDefinitions()" (click)="selectDefinition(definition.text)"
                 [class.definition_selected]="definition.text == selectedDefinitionText" class="definition_container">
-                {{definition.text}}
+                {{room.word}}: {{definition.text}}
             </div>
         </div>
-        <div>
-            <button *ngIf="selectedDefinitionText != '' && !finished" (click)="finish()">Pronto!</button>
+        <div style="margin-top: 12px;">
+            <button mat-button class="default_button" *ngIf="selectedDefinitionText != '' && !finished"
+                (click)="finish()">Pronto!</button>
         </div>
     </div>
     <div *ngIf="correctDefinition">

@@ -1,47 +1,79 @@
 <div *ngIf="!room">
     Loading.....
 </div>
-<div *ngIf="room">
-    Step {{room.step}}/3 (Round {{room.round}}/{{room.maxRounds}})
+<div *ngIf="room" class="room_header">
 
-    <button (click)="leaveRoom()">Sair</button>
+    <div *ngIf="!amIHost">
+        /{{room.name}}
+    </div>
+    <div *ngIf="amIHost">
+        <mat-icon>settings</mat-icon>
+    </div>
 
     <div>
-        <app-step0 [room]="room" *ngIf="room.step == 0"></app-step0>
+        Round {{room.round}}/{{room.maxRounds}}
+    </div>
+
+    <div>
+        <button (click)="leaveRoom()">Sair</button>
+    </div>
+</div>
+
+<div *ngIf="room" class="main_container">
+
+
+    <div *ngIf="countdown > 0 && room?.step != 0" class='countdown_container'>
+        {{countdown}}
+    </div>
+
+    <div class="step_container">
+        <app-step0 [room]="room" [amIHost]="amIHost" [hostUser]="hostUser" *ngIf="room.step == 0"></app-step0>
         <app-step1 [room]="room" *ngIf="room.step == 1"></app-step1>
         <app-step2 [room]="room" *ngIf="room.step == 2"></app-step2>
         <app-step3 [room]="room" *ngIf="room.step == 3"></app-step3>
     </div>
 
-    <div>
-        <table border="1">
-            <tr>
-                <td>User</td>
-                <td>Score</td>
-                <td>Inativo</td>
-            </tr>
-            <tr *ngFor="let user of room.users">
-                <td>
-                    <img [src]="user.imgUrl" class="avatar_pequeno" />
-                    {{user.name}}
-                </td>
-                <td>{{user.score}}</td>
-                <td>{{user.inactive}}</td>
-            </tr>
-        </table>
+    <div class="bottom_container">
+        <div class="users_container">
+
+            <div *ngFor="let user of room.users" class="user_container" [class.inactive_user]="user.inactive">
+                <div class="user_block">
+                    <div>
+                        <img [src]="user.imgUrl" class="avatar_pequeno" />
+                    </div>
+                    <div>
+                        {{user.name}}
+                    </div>
+                </div>
+                <div>
+                    {{user.score}} pts
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="chat_container">
+            <div>
+                <h4>Chat</h4>
+            </div>
+            <div class="messages_container">
+                <div *ngFor="let message of room.messages">
+                    {{message.userName}}: {{message.text}}
+                </div>
+            </div>
+            <div class="send_message_container">
+                <div style="width: 90%;">
+                    <input [(ngModel)]="messageText" class="default_input" (keyup)="messageInputKeyup($event)"
+                        type="text" />
+                </div>
+                <div>
+                    <button mat-icon-button class="send_message_button" (click)="sendMessage()">
+                        <mat-icon>send</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <div *ngFor="let message of room.messages">
-            {{message.userName}}: {{message.text}}
-        </div>
-        <div>
-            <input [(ngModel)]="messageText" (keyup)="messageInputKeyup($event)" type="text" />
-            <button (click)="sendMessage()">Enviar</button>
-        </div>
-    </div>
-</div>
-
-<div *ngIf="countdown > 0 && room?.step != 0" class='countdown_container'>
-    {{countdown}}
 </div>

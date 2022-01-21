@@ -12,6 +12,9 @@ import { environment } from '../environments/environment';
 // Material
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 // Forms
 import { FormsModule } from '@angular/forms';
@@ -38,7 +41,8 @@ import { CorrectDefinitionDialogComponent } from './dialogs/correct-definition-d
 import { ChooseAvatarDialogComponent } from './dialogs/choose-avatar-dialog/choose-avatar-dialog.component';
 import { PodiumDialogComponent } from './dialogs/podium-dialog/podium-dialog.component';
 
-const MATERIAL_MODULES = [MatDialogModule, MatSnackBarModule]
+const MATERIAL_MODULES = [MatDialogModule, MatSnackBarModule, MatIconModule, MatButtonModule,
+  ClipboardModule]
 
 @NgModule({
   declarations: [

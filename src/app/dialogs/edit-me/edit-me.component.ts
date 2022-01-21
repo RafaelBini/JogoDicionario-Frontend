@@ -24,7 +24,7 @@ export class EditMeComponent implements OnInit {
     if (!this.fireService.user) return;
     else if (!this.fireService.user.name) return this.snack.open('O nickname é obrigatório!')
     else if (this.fireService.user.name.length <= 2) return this.snack.open('Nickname muito pequeno!')
-    else if (this.fireService.user.name.length > 15) return this.snack.open('Nickname muito grande!')
+    else if (this.fireService.user.name.length > 9) return this.snack.open('Nickname muito grande!')
     this.fireService.updateMe({
       name: this.fireService.user?.name,
       imgUrl: this.fireService.user?.imgUrl

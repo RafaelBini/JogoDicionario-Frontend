@@ -1,9 +1,27 @@
-<div *ngIf='!fireService.user'>
-    Loading...
-</div>
+<div class="main_container">
 
-<div *ngIf='fireService.user'>
-    <img [src]="fireService.user.imgUrl" (click)="chooseImg()" class="avatar_grande" style="cursor: pointer;">
-    <input [(ngModel)]="fireService.user.name" (ngModelChange)="updateUser()" placeholder="my nickname" type="text" />
-    <button routerLink="binis">Jogar!</button>
+
+    <h2>O Jogo do Dicionário</h2>
+    <h4>Invente definições e convença!</h4>
+
+    <div *ngIf='!fireService.user'>
+        Loading...
+    </div>
+
+    <div *ngIf='fireService.user' class="user_container">
+        <div (click)="chooseImg()" style="cursor: pointer;" class="img_container">
+            <img [src]="fireService.user.imgUrl" class="avatar_grande">
+            <mat-icon class="edit_img_symbol">edit</mat-icon>
+        </div>
+        <div>
+            <input [(ngModel)]="fireService.user.name" maxlength="9" (ngModelChange)="updateUser()"
+                placeholder="my nickname" type="text" />
+        </div>
+        <div>
+            <button mat-button routerLink="binis">JOGAR!</button>
+        </div>
+
+    </div>
+
+
 </div>

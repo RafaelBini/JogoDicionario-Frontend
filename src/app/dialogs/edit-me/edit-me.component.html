@@ -3,6 +3,6 @@
 </div>
 
 <div *ngIf='fireService.user'>
-    <input [(ngModel)]="fireService.user.name" placeholder="Meu nickname" type="text" />
+    <input [(ngModel)]="fireService.user.name" maxlength="9" placeholder="Meu nickname" type="text" />
     <button (click)="done()">Pronto!</button>
 </div>

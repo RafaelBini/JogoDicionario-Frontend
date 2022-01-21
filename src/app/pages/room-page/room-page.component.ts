@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { PodiumDialogComponent } from './../../dialogs/podium-dialog/podium-dialog.component';
 import { CookieService } from 'ngx-cookie-service';
 import { RemovedDialogComponent } from './../../dialogs/removed-dialog/removed-dialog.component';
@@ -5,7 +6,7 @@ import { InactiveDialogComponent } from './../../dialogs/inactive-dialog/inactiv
 import { EditMeComponent } from './../../dialogs/edit-me/edit-me.component';
 import { Room } from './../../models/room';
 import { FireService } from 'src/app/services/fire.service';
-import { firstValueFrom, Subscription } from 'rxjs';
+import { firstValueFrom, Observable, Subscription } from 'rxjs';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -25,11 +26,14 @@ export class RoomPageComponent implements OnInit, OnDestroy {
     private fireService: FireService,
     private apiService: ApiService,
     private dialog: MatDialog,
+    private snack: MatSnackBar
 
   ) { }
 
   public room?: Room;
   public countdown: number = 0;
+  hostUser: any;
+  amIHost: boolean = false;
 
   public inactiveDialogRef: MatDialogRef<InactiveDialogComponent> | undefined;
   private roomListener: Subscription | undefined;
@@ -82,6 +86,11 @@ export class RoomPageComponent implements OnInit, OnDestroy {
         })
       }
 
+      this.hostUser = this.room.users[0];
+      this.amIHost = this.room.users[0].hash == this.fireService.getMyHash()
+      this.room.users = this.room.users.sort((a, b) => b.score - a.score)
+
+      this.room.messages.reverse()
 
     })
 
@@ -89,6 +98,11 @@ export class RoomPageComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.roomListener?.unsubscribe();
+  }
+
+  @HostListener('window:beforeunload')
+  canDeactivate(): boolean {
+    return this.room?.step == 0;
   }
 
   startCountdown() {
@@ -125,9 +139,22 @@ export class RoomPageComponent implements OnInit, OnDestroy {
   async sendMessage() {
     if (!this.messageText) return;
 
-    await this.apiService.sendMessage(this.room?.id || '', this.messageText)
+    try {
+      if (this.messageText.includes("/host")) {
+        var password = this.messageText.split('/')[0];
+        await this.apiService.claimHost(this.room?.id || '', password);
+        this.messageText = '';
+        return;
+      }
 
-    this.messageText = '';
+      await this.apiService.sendMessage(this.room?.id || '', this.messageText)
+
+      this.messageText = '';
+    }
+    catch (ex: any) {
+      this.snack.open(ex.error.msg, undefined, { duration: 3600 })
+    }
+
   }
 
 }

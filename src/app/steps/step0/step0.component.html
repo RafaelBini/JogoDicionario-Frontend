@@ -1,9 +1,18 @@
-<div *ngIf="room">
-    <button *ngIf="amIHost() && room.users.length > 1" (click)="startRoom()">Iniciar</button>
-    <div *ngIf="!amIHost() && room.users.length> 1">
-        Aguardando o {{getHost().name}} iniciar o jogo
+<div *ngIf="room" class="main_container">
+    <div class="invite_container" [cdkCopyToClipboard]="getLink()" (click)="copy()">
+        Use este link para convidar amigos
+        <br />
+        <u>{{getLink()}}</u>
     </div>
-    <div *ngIf="room.users.length <= 1">
+    <div *ngIf="amIHost && room.users.length > 1">
+        <button mat-raised-button (click)="startRoom()">
+            Iniciar o jogo!
+        </button>
+    </div>
+    <div *ngIf="!amIHost && room.users.length> 1" class="msg_container">
+        Aguardando {{hostUser.name}} iniciar o jogo
+    </div>
+    <div *ngIf="room.users.length <= 1" class="msg_container">
         Aguardando pelo menos mais um jogador para poder iniciar
     </div>
 </div>

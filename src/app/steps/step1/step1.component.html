@@ -2,13 +2,23 @@
     Loading...
 </div>
 
-<div *ngIf="room">
+<div *ngIf="room" class="main_container">
     <div *ngIf="!room.word">.....</div>
     <div *ngIf="room.word" class="word_container">
         {{room.word}}
     </div>
-    <div>
-        <input [disabled]="isDefinitionSent" [(ngModel)]="myDefinition" type="text" placeholder="Minha definição.." />
-        <button *ngIf="!isDefinitionSent" (click)="sendDefinition()">Pronto!</button>
+
+
+    <textarea rows="4" [disabled]="isDefinitionSent" maxlength="240" [(ngModel)]="myDefinition" type="text"
+        [placeholder]="'Minha definição convicente para ' + room.word"></textarea>
+    <br />
+
+    <div *ngIf="!isDefinitionSent">
+        <button mat-button class="default_button" (click)="sendDefinition()">Pronto!</button>
     </div>
+    <div *ngIf="isDefinitionSent">
+        Aguarde os outros jogadores ou o tempo acabar
+    </div>
+
+
 </div>

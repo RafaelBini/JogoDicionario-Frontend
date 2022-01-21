@@ -67,4 +67,9 @@ export class ApiService {
     return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/chat/message`, { roomId, userId: this.fireService.user.id, text }));
   }
 
+  claimHost(roomId: string, password: string) {
+    if (!this.fireService.user) return;
+    return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/claim-host`, { roomId, userId: this.fireService.user.id, password }));
+  }
+
 }
