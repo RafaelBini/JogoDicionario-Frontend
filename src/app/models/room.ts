@@ -15,4 +15,5 @@ export interface Room {
     createdAt: firebase.Timestamp
     maxTimeStep1: number
     maxTimeStep2: number
+    maxTimeStep3: number
 }

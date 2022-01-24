@@ -77,6 +77,7 @@ export class FireService {
       round: 0,
       maxTimeStep1: 40,
       maxTimeStep2: 40,
+      maxTimeStep3: 10,
       createdAt: firebase.Timestamp.now()
     });
 

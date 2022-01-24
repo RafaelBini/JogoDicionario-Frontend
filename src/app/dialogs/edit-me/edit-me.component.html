@@ -2,7 +2,16 @@
     Loading...
 </div>
 
-<div *ngIf='fireService.user'>
-    <input [(ngModel)]="fireService.user.name" maxlength="9" placeholder="Meu nickname" type="text" />
-    <button (click)="done()">Pronto!</button>
+<div *ngIf='fireService.user' class='main_container'>
+    <div (click)="chooseImg()" style="cursor: pointer;" class="img_container">
+        <img [src]="fireService.user.imgUrl" class="avatar_grande">
+        <mat-icon class="edit_img_symbol">edit</mat-icon>
+    </div>
+    <div>
+        <input [(ngModel)]="fireService.user.name" maxlength="9" placeholder="Meu nickname" type="text" />
+    </div>
+    <div>
+        <button mat-button (click)="done()">Pronto!</button>
+    </div>
+
 </div>

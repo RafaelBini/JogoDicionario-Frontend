@@ -20,11 +20,18 @@ export class Step3Component implements OnInit {
   }
 
   getVoters(userName: string) {
-    return this.room?.users.filter(u => u.votedUserName == userName)
+    if (!this.room) return [];
+    return this.room.users.filter(u => u.votedUserName == userName)
   }
 
-  getMyVotedUserName() {
-    return this.getMeAtRoom().votedUserName;
+  getOrderedDefinitions() {
+    return this.room?.definitions.sort((a, b) => {
+      return this.getVoters(b.userName).length - this.getVoters(a.userName).length;
+    })
+  }
+
+  votedCorrect() {
+    return this.getMeAtRoom().votedUserName == 'Definição Correta';
   }
 
   getMeAtRoom() {

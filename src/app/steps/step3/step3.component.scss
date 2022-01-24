@@ -1,0 +1,50 @@
+.news{
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.bad{
+    background-color: lightcoral;
+}
+.good{
+    background-color: lightgreen;
+}
+
+table{
+    border-collapse:collapse;
+    width: 100%;
+}
+td:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    min-width: 30%;
+    line-height: 1;
+    word-break: normal;
+    padding: 10px;
+    box-sizing: border-box;
+}
+td:nth-child(1) > div{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+td:nth-child(2){
+    min-width: 70%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+tr{
+    background-color: whitesmoke;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+
+.voters_container{
+    font-size: 11px;
+}

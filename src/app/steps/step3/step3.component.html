@@ -1,25 +1,61 @@
 <div *ngIf="room">
 
-    <div>
-        Você votou em {{getMyVotedUserName()}}
+    <div *ngIf="!votedCorrect()" class="bad news">
+        Você votou na definição de {{getMeAtRoom().votedUserName}}
+    </div>
+    <div *ngIf="votedCorrect()" class="good news">
+        Você votou na definição correta! <b>+1pt</b>
+    </div>
+
+    <div *ngIf="getVoters(getMeAtRoom().name).length > 1" class="good news">
+        {{getVoters(getMeAtRoom().name).length}} jogadores votaram em você!
+        <b>+{{getVoters(getMeAtRoom().name).length}}pts</b>
+    </div>
+    <div *ngIf="getVoters(getMeAtRoom().name).length == 1" class="good news">
+        {{getVoters(getMeAtRoom().name)[0].name}} votou em você!
+        <b>+1pt</b>
+    </div>
+    <div *ngIf="getVoters(getMeAtRoom().name).length <= 0" class="bad news">
+        Ninguém votou na sua definição
     </div>
 
     <div>
         <table>
-            <tr>
-                <td>Criador</td>
-                <td>Definição</td>
-                <td>Votos</td>
-            </tr>
-            <tr *ngFor="let definition of room.definitions">
-                <td>{{definition.userName}}</td>
-                <td>{{definition.text}}</td>
+
+            <tr *ngFor="let definition of getOrderedDefinitions()">
+                <td *ngIf="definition.userName != 'Definição Correta'">
+                    <div>
+                        <img [src]="definition.userImgUrl" class="avatar_pequeno" />
+                    </div>
+                    <div>
+                        {{definition.userName}}
+                    </div>
+
+                </td>
+                <td *ngIf="definition.userName == 'Definição Correta'">
+                    <div>
+                        <mat-icon style="color: green;">
+                            star
+                        </mat-icon>
+                    </div>
+                    <div>
+                        Correta
+                    </div>
+                </td>
                 <td>
-                    <div *ngFor="let voter of getVoters(definition.userName)">
-                        {{voter.name}}
+                    {{definition.text}}
+                    <div class="voters_container">
+                        {{getVoters(definition.userName).length}} Voto(s):
+                        <span *ngIf="getVoters(definition.userName).length <= 0">
+                            -
+                        </span>
+                        <span *ngFor="let voter of getVoters(definition.userName)">
+                            {{voter.name}};
+                        </span>
                     </div>
                 </td>
             </tr>
+
         </table>
     </div>
 

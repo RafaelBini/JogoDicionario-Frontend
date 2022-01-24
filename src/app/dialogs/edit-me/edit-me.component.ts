@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FireService } from 'src/app/services/fire.service';
+import { ChooseAvatarDialogComponent } from '../choose-avatar-dialog/choose-avatar-dialog.component';
 
 @Component({
   selector: 'app-edit-me',
@@ -13,6 +14,7 @@ export class EditMeComponent implements OnInit {
   constructor(
     public fireService: FireService,
     private snack: MatSnackBar,
+    private dialog: MatDialog,
     private dialogRef: MatDialogRef<EditMeComponent>
   ) { }
 
@@ -32,6 +34,15 @@ export class EditMeComponent implements OnInit {
     this.dialogRef.disableClose = false;
     this.dialogRef.close();
     return true;
+  }
+
+  chooseImg() {
+    var diagRef = this.dialog.open(ChooseAvatarDialogComponent)
+    diagRef.afterClosed().subscribe(newImgUrl => {
+      if (this.fireService.user && newImgUrl) {
+        this.fireService.user.imgUrl = newImgUrl;
+      }
+    })
   }
 
 
