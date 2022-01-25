@@ -1,7 +1,10 @@
 <div *ngIf="room">
 
-    <div *ngIf="!votedCorrect()" class="bad news">
+    <div *ngIf="!votedCorrect() && getMeAtRoom().votedUserName" class="bad news">
         Você votou na definição de {{getMeAtRoom().votedUserName}}
+    </div>
+    <div *ngIf="!getMeAtRoom().votedUserName" class="bad news">
+        Você não votou em ninguém
     </div>
     <div *ngIf="votedCorrect()" class="good news">
         Você votou na definição correta! <b>+1pt</b>
@@ -43,7 +46,7 @@
                     </div>
                 </td>
                 <td>
-                    {{definition.text}}
+                    {{room.word}}: {{definition.text}}
                     <div class="voters_container">
                         {{getVoters(definition.userName).length}} Voto(s):
                         <span *ngIf="getVoters(definition.userName).length <= 0">

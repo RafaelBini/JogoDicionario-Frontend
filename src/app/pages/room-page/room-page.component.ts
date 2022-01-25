@@ -12,7 +12,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-
 @Component({
   selector: 'app-room-page',
   templateUrl: './room-page.component.html',
@@ -31,13 +30,14 @@ export class RoomPageComponent implements OnInit, OnDestroy {
   ) { }
 
   public room?: Room;
-  public countdown: number = 0;
+  public countdownPercentage: number = 0;
   hostUser: any;
   amIHost: boolean = false;
 
   public inactiveDialogRef: MatDialogRef<InactiveDialogComponent> | undefined;
   private roomListener: Subscription | undefined;
   public messageText = ''
+  justChangedStep = false;
 
   async ngOnInit() {
 
@@ -108,13 +108,17 @@ export class RoomPageComponent implements OnInit, OnDestroy {
   startCountdown() {
     setInterval(async () => {
       if (!this.room || this.room.step == 0 || !this.room.stepEndAt) {
-        this.countdown = 0;
+        this.countdownPercentage = 100;
+
         return;
       }
 
-      this.countdown = await this.apiService.getSecsRemaining(this.room.stepEndAt?.toDate())
-
-    }, 1000)
+      const SECS_REMAINING = await this.apiService.getSecsRemaining(this.room.stepEndAt?.toDate())
+      const MAX_TIME = (this.room as any)[`maxTimeStep${this.room.step}`];
+      const NEW_COUNT_DOWN_PERCENTAGE = (SECS_REMAINING / MAX_TIME)
+      this.justChangedStep = NEW_COUNT_DOWN_PERCENTAGE > this.countdownPercentage
+      this.countdownPercentage = NEW_COUNT_DOWN_PERCENTAGE
+    }, 500)
   }
 
   getMeAtRoom() {

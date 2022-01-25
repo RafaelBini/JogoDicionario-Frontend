@@ -13,9 +13,9 @@ textarea{
     padding: 7px;
     box-sizing: border-box;
     border-radius: 5px;
-    border: 1px solid transparent;
+    border: 1px solid gray;
 }
 textarea:focus{
-    border: 1px solid gray;
+    border: 1px solid black;
     outline: none;
 }

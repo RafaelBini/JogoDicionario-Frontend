@@ -21,12 +21,13 @@
 
 <div *ngIf="room" class="main_container">
 
-
-    <div *ngIf="countdown > 0 && room?.step != 0" class='countdown_container'>
-        {{countdown}}
+    <div *ngIf="room.step != 0" class="countdown_bar_container">
+        <div class="countdown_bar" [class.countdown_bar_danger]="countdownPercentage < 0.3"
+            [style.transform]="'scaleX('+ countdownPercentage +')'"
+            [style.transitionDuration]="justChangedStep ? '0.2s' : '1s'"></div>
     </div>
 
-    <div class="step_container">
+    <div class="step_container" [class.step_container_caution]="justChangedStep">
         <app-step0 [room]="room" [amIHost]="amIHost" [hostUser]="hostUser" *ngIf="room.step == 0"></app-step0>
         <app-step1 [room]="room" *ngIf="room.step == 1"></app-step1>
         <app-step2 [room]="room" *ngIf="room.step == 2"></app-step2>
