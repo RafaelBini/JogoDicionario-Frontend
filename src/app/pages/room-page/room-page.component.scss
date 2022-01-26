@@ -90,6 +90,7 @@
     box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0.055);
     width: 50%;
+
 }
 
 .messages_container{
@@ -100,7 +101,7 @@
     background-color: whitesmoke;
     height: 300px;
     overflow: auto;
-    word-break: break-all;
+    word-break: normal;
     margin-bottom: 10px;
 }
 

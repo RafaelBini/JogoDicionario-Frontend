@@ -7,7 +7,10 @@
         /{{room.name}}
     </div>
     <div *ngIf="amIHost">
-        <mat-icon>settings</mat-icon>
+        <button mat-button (click)="openEditRoom()">
+            <mat-icon>settings</mat-icon>
+        </button>
+
     </div>
 
     <div>
@@ -15,7 +18,7 @@
     </div>
 
     <div>
-        <button (click)="leaveRoom()">Sair</button>
+        <button mat-button class="danger_button" (click)="leaveRoom()">Sair</button>
     </div>
 </div>
 

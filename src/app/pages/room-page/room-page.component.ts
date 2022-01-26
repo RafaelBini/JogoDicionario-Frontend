@@ -1,3 +1,5 @@
+import { EditRoomDialogComponent } from './../../dialogs/edit-room-dialog/edit-room-dialog.component';
+import { ConfirmDialogComponent } from './../../dialogs/confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PodiumDialogComponent } from './../../dialogs/podium-dialog/podium-dialog.component';
 import { CookieService } from 'ngx-cookie-service';
@@ -127,10 +129,26 @@ export class RoomPageComponent implements OnInit, OnDestroy {
   }
 
   async leaveRoom() {
-    await this.router.navigate(['']);
-    setTimeout(() => {
-      this.apiService.leaveRoom(this.room?.id || '');
-    }, 1500);
+
+    var diag = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        isDanger: true,
+        title: 'Tem certeza de vai sair?',
+        content: 'Ao sair, você perderá todos os seus pontos.'
+      }
+    })
+
+    diag.afterClosed().subscribe(async result => {
+      if (result) {
+        await this.router.navigate(['']);
+        setTimeout(() => {
+          this.apiService.leaveRoom(this.room?.id || '');
+        }, 1500);
+      }
+
+    })
+
+
 
 
 
@@ -159,6 +177,12 @@ export class RoomPageComponent implements OnInit, OnDestroy {
       this.snack.open(ex.error.msg, undefined, { duration: 3600 })
     }
 
+  }
+
+  openEditRoom() {
+    this.dialog.open(EditRoomDialogComponent, {
+      data: this.room
+    })
   }
 
 }

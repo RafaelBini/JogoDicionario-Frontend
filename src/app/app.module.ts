@@ -41,6 +41,8 @@ import { Step0Component } from './steps/step0/step0.component';
 import { CorrectDefinitionDialogComponent } from './dialogs/correct-definition-dialog/correct-definition-dialog.component';
 import { ChooseAvatarDialogComponent } from './dialogs/choose-avatar-dialog/choose-avatar-dialog.component';
 import { PodiumDialogComponent } from './dialogs/podium-dialog/podium-dialog.component';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { EditRoomDialogComponent } from './dialogs/edit-room-dialog/edit-room-dialog.component';
 
 const MATERIAL_MODULES = [
   MatDialogModule, MatSnackBarModule, MatIconModule, MatButtonModule,
@@ -61,7 +63,9 @@ const MATERIAL_MODULES = [
     Step0Component,
     CorrectDefinitionDialogComponent,
     ChooseAvatarDialogComponent,
-    PodiumDialogComponent
+    PodiumDialogComponent,
+    ConfirmDialogComponent,
+    EditRoomDialogComponent
   ],
   imports: [
     BrowserModule,
