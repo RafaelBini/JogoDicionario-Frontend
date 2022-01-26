@@ -43,6 +43,7 @@ import { ChooseAvatarDialogComponent } from './dialogs/choose-avatar-dialog/choo
 import { PodiumDialogComponent } from './dialogs/podium-dialog/podium-dialog.component';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 import { EditRoomDialogComponent } from './dialogs/edit-room-dialog/edit-room-dialog.component';
+import { LoadingComponent } from './pieces/loading/loading.component';
 
 const MATERIAL_MODULES = [
   MatDialogModule, MatSnackBarModule, MatIconModule, MatButtonModule,
@@ -65,7 +66,8 @@ const MATERIAL_MODULES = [
     ChooseAvatarDialogComponent,
     PodiumDialogComponent,
     ConfirmDialogComponent,
-    EditRoomDialogComponent
+    EditRoomDialogComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

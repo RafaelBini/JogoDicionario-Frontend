@@ -5,8 +5,10 @@
     <h4>Invente definições e convença!</h4>
 
     <div *ngIf='!fireService.user'>
-        Loading...
+        <app-loading></app-loading>
     </div>
+
+
 
     <div *ngIf='fireService.user' class="user_container">
         <div (click)="chooseImg()" style="cursor: pointer;" class="img_container">
