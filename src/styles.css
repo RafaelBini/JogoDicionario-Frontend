@@ -1,24 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+
+  /* :root {
+    --primary: black;
+    --primary-transp: rgba(0, 0, 0, 0.7);
+    --primary-contrast: rgb(255, 255, 255);
+    --secondary: whitesmoke;
+    --secondary-contrast: black;
+    --danger: rgb(148, 60, 60);
+    --danger-transp: rgba(148, 60, 60, 0.7);
+    --danger-contrast: rgb(255, 255, 255);
+    --caution: rgba(168, 168, 38, 0.178); 
+    --happy: rgb(45, 105, 45);
+    --happy-contrast: white;
+  } */
+
+  :root {
+    --primary: rgb(0, 174, 255);
+    --primary-transp: rgba(0, 174, 255, 0.7);
+    --primary-contrast: rgb(255, 255, 255);
+    --secondary: whitesmoke;
+    --secondary-contrast: black;
+    --danger: rgb(248, 113, 113);
+    --danger-transp: rgba(248, 113, 113, 0.7);
+    --danger-contrast: rgb(255, 255, 255);
+    --caution: rgba(255, 255, 0, 0.178);  
+    --happy: lightgreen;
+    --happy-contrast: black;  
+  }
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-.avatar_pequeno{
+.avatar_little{
     height: 20x;
     width: 20px;
     border-radius: 50%;
     border: 1px solid darkgreen;
 }
 
-.avatar_medio{
+.avatar_medium{
     height: 50px;
     width: 50px;
     border-radius: 50%;
     border: 1px solid darkgreen;
 }
 
-.avatar_grande{
+.avatar_big{
     height: 80px;
     width: 80px;
     border-radius: 50%;
@@ -47,12 +75,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .default_button{
-    background-color: lightblue;
+    background-color: var(--primary);
+    color: var(--primary-contrast);
     padding: 10px;
     font-size: 16px;
 }
 
 .danger_button{
-    background-color: lightcoral;
-    color: white
+    background-color: var(--danger);
+    color: var(--danger-contrast);
+}
+
+.mat-dialog-container{
+    position: relative;
+}
+
+.btn_dialog_close{
+    position: absolute !important;
+    top: 0px;
+    right: 0px;
+    color: gray;
+    opacity: 0.6;
 }

@@ -11,13 +11,13 @@
 }
 
 .yes_btn{
-    background-color: lightblue;
+    background-color: var(--primary);
     color: white;
-    border: 1px solid lightblue;
+    border: 1px solid var(--primary);
 }
 
 .danger{
-    background-color: lightcoral;
+    background-color: var(--danger);
 }
 
 .no_btn{

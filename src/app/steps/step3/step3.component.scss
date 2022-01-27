@@ -7,10 +7,12 @@
 }
 
 .bad{
-    background-color: lightcoral;
+    background-color: var(--danger);
+    color: var(--danger-contrast);
 }
 .good{
-    background-color: lightgreen;
+    background-color: var(--happy);
+    color: var(--happy-contrast);
 }
 
 table{

@@ -1,8 +1,10 @@
 <div class="main_container">
 
+    <div class='title'>
+        <h2>O Jogo do Dicionário</h2>
+        <h4>Invente definições e convença!</h4>
+    </div>
 
-    <h2>O Jogo do Dicionário</h2>
-    <h4>Invente definições e convença!</h4>
 
     <div *ngIf='!fireService.user'>
         <app-loading></app-loading>
@@ -12,7 +14,7 @@
 
     <div *ngIf='fireService.user' class="user_container">
         <div (click)="chooseImg()" style="cursor: pointer;" class="img_container">
-            <img [src]="fireService.user.imgUrl" class="avatar_grande">
+            <img [src]="fireService.user.imgUrl" class="avatar_big">
             <mat-icon class="edit_img_symbol">edit</mat-icon>
         </div>
         <div>

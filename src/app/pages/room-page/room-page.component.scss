@@ -4,16 +4,16 @@
     align-items: flex-start; 
     justify-content: flex-start; 
     width: 100%;
-    background-color: gray;
+    background-color: var(--secondary);
 }
 .countdown_bar{
-    height: 20px; background-color: lightblue; 
+    height: 20px; background-color: var(--primary); 
     transition: all 1s linear; 
     transform-origin: top left; 
     width: 100%;
 }
 .countdown_bar_danger{
-    background-color: red;
+    background-color: var(--danger);
 }
 
 .step_container{
@@ -54,7 +54,8 @@
 
 .users_container{
     width: 50%;
-    padding: 4px;
+    padding-left: 3px;
+    padding-right: 3px;    
     box-sizing: border-box;
 }
 .user_container{
@@ -64,11 +65,11 @@
     justify-content: space-between;
     padding: 7px;
     box-sizing: border-box;
-    background-color: rgba(173, 216, 230, 0.062);
+    background-color: var(--secondary);
+    color: var(--secondary-contrast);
     border-radius: 5px;
-    border-bottom: 1px solid gray;
-    border-left: 1px solid gray;
     transition: all 10s linear; 
+    margin-bottom: 3px;
 }
 .user_block{
     display: flex;
@@ -98,7 +99,7 @@
     flex-direction: column-reverse;
     align-items: stretch;
     justify-content: flex-start;
-    background-color: whitesmoke;
+    background-color: var(--secondary);
     height: 300px;
     overflow: auto;
     word-break: normal;
@@ -111,7 +112,7 @@
 
 
 .inactive_user{
-    background-color: lightcoral;
+    background-color: var(--danger-transp);
 }
 
 .send_message_container{

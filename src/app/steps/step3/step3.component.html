@@ -28,7 +28,7 @@
             <tr *ngFor="let definition of getOrderedDefinitions()">
                 <td *ngIf="definition.userName != 'Definição Correta'">
                     <div>
-                        <img [src]="definition.userImgUrl" class="avatar_pequeno" />
+                        <img [src]="definition.userImgUrl" class="avatar_little" />
                     </div>
                     <div>
                         {{definition.userName}}

@@ -9,11 +9,12 @@
     border: 1px solid gray;
 }
 .definition_container:hover{
-    background-color: whitesmoke;
+    background-color: var(--secondary);
 }
 
 .definition_selected{
-    background-color: rgb(59, 164, 199);
+    background-color: var(--primary);
+    color: var(--primary-contrast);
 }
 
 .options_container{

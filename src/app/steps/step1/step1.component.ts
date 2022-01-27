@@ -35,8 +35,13 @@ export class Step1Component implements OnInit {
 
     try {
       this.isDefinitionSent = true;
-      const HAS_FINAL = this.myDefinition[this.myDefinition.length - 1].match(/[!\.\?]/g)
-      this.myDefinition = `${this.myDefinition[0].toUpperCase()}${this.myDefinition.slice(1)}${HAS_FINAL ? '' : '.'}`
+
+      const HAS_GOOD_FINAL = this.myDefinition[this.myDefinition.length - 1].match(/[!\.\?]/g)
+
+      this.myDefinition = this.myDefinition.trimEnd().trimStart();
+
+      this.myDefinition = `${this.myDefinition[0].toUpperCase()}${this.myDefinition.slice(1)}${HAS_GOOD_FINAL ? '' : '.'}`
+
       this.cookieService.set('myDefinition', this.myDefinition, new Date().getTime() + (1000 * 60 * 2), `/${this.room?.id}`);
       this.apiService.myDefinition = this.myDefinition;
       var resp = await this.apiService.sendDefinition(this.room?.id || '', this.myDefinition);

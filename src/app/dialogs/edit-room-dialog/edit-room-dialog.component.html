@@ -1,21 +1,24 @@
 <div class="main_container">
     <h2>Configurações da Sala</h2>
     <div>
-        Segundos para escrever definição:
-        <br />
+        Escrever definição:
         <input type="number" [(ngModel)]="room.maxTimeStep1" class="default_input short_input" />
+        segs
     </div>
     <div>
-        Segundos para votar em uma definição:
-        <br />
+        Votar em definição:
         <input type="number" [(ngModel)]="room.maxTimeStep2" class="default_input short_input " />
+        segs
     </div>
     <div>
-        Segundos para visualizar os resultados:
-        <br />
+        Visualizar resultados:
         <input type="number" [(ngModel)]="room.maxTimeStep3" class="default_input short_input" />
+        segs
     </div>
-    <div>
-        <button mat-button class="default_button" (click)="save()">Salvar</button>
-    </div>
+
+    <button mat-button class="default_button" (click)="save()">Salvar</button>
+
 </div>
+<button mat-icon-button mat-dialog-close class="btn_dialog_close">
+    <mat-icon>cancel</mat-icon>
+</button>

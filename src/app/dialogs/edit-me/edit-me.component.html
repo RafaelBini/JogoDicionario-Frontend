@@ -4,7 +4,7 @@
 
 <div *ngIf='fireService.user' class='main_container'>
     <div (click)="chooseImg()" style="cursor: pointer;" class="img_container">
-        <img [src]="fireService.user.imgUrl" class="avatar_grande">
+        <img [src]="fireService.user.imgUrl" class="avatar_big">
         <mat-icon class="edit_img_symbol">edit</mat-icon>
     </div>
     <div>
@@ -15,3 +15,6 @@
     </div>
 
 </div>
+<button mat-icon-button mat-dialog-close class="btn_dialog_close">
+    <mat-icon>cancel</mat-icon>
+</button>
