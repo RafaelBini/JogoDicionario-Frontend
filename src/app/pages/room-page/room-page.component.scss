@@ -38,6 +38,20 @@
     justify-content: space-between;
     padding: 6px;
     box-sizing: border-box;
+
+}
+
+.room_top{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+}
+
+.main_content{
+    margin-top: 400px;
 }
 
 .bottom_container{
@@ -45,8 +59,7 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: stretch;
-    min-height: 300px;
-    max-height: 300px;
+    height: 300px;
     padding: 6px;
     box-sizing: border-box;
     width: 100%;

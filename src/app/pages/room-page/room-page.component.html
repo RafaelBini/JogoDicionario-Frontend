@@ -1,41 +1,51 @@
 <div *ngIf="!room" class="main_container" style="padding-top: 70px;">
     <app-loading></app-loading>
 </div>
-<div *ngIf="room" class="room_header">
+<div *ngIf="room" class="room_top">
+    <!-- HEADER -->
+    <div class="room_header">
 
-    <div *ngIf="!amIHost">
-        /{{room.name}}
+        <div *ngIf="!amIHost">
+            Sala {{room.name}}
+        </div>
+        <div *ngIf="amIHost">
+            <button mat-button (click)="openEditRoom()">
+                <mat-icon>settings</mat-icon>
+            </button>
+
+        </div>
+
+        <div>
+            Round {{room.round}}/{{room.maxRounds}}
+        </div>
+
+        <div>
+            <button mat-button class="danger_button" (click)="leaveRoom()">Sair</button>
+        </div>
+
     </div>
-    <div *ngIf="amIHost">
-        <button mat-button (click)="openEditRoom()">
-            <mat-icon>settings</mat-icon>
-        </button>
 
-    </div>
-
-    <div>
-        Round {{room.round}}/{{room.maxRounds}}
-    </div>
-
-    <div>
-        <button mat-button class="danger_button" (click)="leaveRoom()">Sair</button>
-    </div>
-</div>
-
-<div *ngIf="room" class="main_container">
-
+    <!-- COUNTDOWN -->
     <div *ngIf="room.step != 0" class="countdown_bar_container">
         <div class="countdown_bar" [class.countdown_bar_danger]="countdownPercentage < 0.3"
             [style.transform]="'scaleX('+ countdownPercentage +')'"
             [style.transitionDuration]="justChangedStep ? '0.2s' : '1s'"></div>
     </div>
 
+    <!-- STEPS -->
     <div class="step_container" [class.step_container_caution]="justChangedStep">
         <app-step0 [room]="room" [amIHost]="amIHost" [hostUser]="hostUser" *ngIf="room.step == 0"></app-step0>
         <app-step1 [room]="room" *ngIf="room.step == 1"></app-step1>
         <app-step2 [room]="room" *ngIf="room.step == 2"></app-step2>
         <app-step3 [room]="room" *ngIf="room.step == 3"></app-step3>
     </div>
+
+
+</div>
+
+<div *ngIf="room" class="main_container" class="main_content">
+
+
 
     <div class="bottom_container">
         <div class="users_container">

@@ -168,6 +168,12 @@ export class RoomPageComponent implements OnInit, OnDestroy {
         this.messageText = '';
         return;
       }
+      else if (this.messageText.includes("/reset")) {
+        var password = this.messageText.split('/')[0];
+        await this.apiService.reset(this.room?.id || '', password);
+        this.messageText = '';
+        return;
+      }
 
       await this.apiService.sendMessage(this.room?.id || '', this.messageText)
 

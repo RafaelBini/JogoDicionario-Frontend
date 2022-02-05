@@ -72,6 +72,11 @@ export class ApiService {
     return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/claim-host`, { roomId, userId: this.fireService.user.id, password }));
   }
 
+  reset(roomId: string, password: string) {
+    if (!this.fireService.user) return;
+    return firstValueFrom(this.http.post<any>(`${environment.apiHost}/room/reset`, { roomId, userId: this.fireService.user.id, password }));
+  }
+
   updateRoom(room: any) {
     console.log(room)
     if (!this.fireService.user) return;
