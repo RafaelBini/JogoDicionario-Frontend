@@ -118,7 +118,13 @@ export class RoomPageComponent implements OnInit, OnDestroy {
       const SECS_REMAINING = await this.apiService.getSecsRemaining(this.room.stepEndAt?.toDate())
       const MAX_TIME = (this.room as any)[`maxTimeStep${this.room.step}`];
       const NEW_COUNT_DOWN_PERCENTAGE = (SECS_REMAINING / MAX_TIME)
-      this.justChangedStep = NEW_COUNT_DOWN_PERCENTAGE > this.countdownPercentage
+      if (NEW_COUNT_DOWN_PERCENTAGE > this.countdownPercentage) {
+        this.justChangedStep = true;
+        window.scrollTo(0, 0)
+      }
+      else {
+        this.justChangedStep = false;
+      }
       this.countdownPercentage = NEW_COUNT_DOWN_PERCENTAGE
     }, 500)
   }

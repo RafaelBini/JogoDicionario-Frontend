@@ -32,6 +32,12 @@
             [style.transitionDuration]="justChangedStep ? '0.2s' : '1s'"></div>
     </div>
 
+
+
+</div>
+
+<div *ngIf="room" class="main_container" class="main_content">
+
     <!-- STEPS -->
     <div class="step_container" [class.step_container_caution]="justChangedStep">
         <app-step0 [room]="room" [amIHost]="amIHost" [hostUser]="hostUser" *ngIf="room.step == 0"></app-step0>
@@ -39,12 +45,6 @@
         <app-step2 [room]="room" *ngIf="room.step == 2"></app-step2>
         <app-step3 [room]="room" *ngIf="room.step == 3"></app-step3>
     </div>
-
-
-</div>
-
-<div *ngIf="room" class="main_container" class="main_content">
-
 
 
     <div class="bottom_container">
