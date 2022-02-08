@@ -193,7 +193,7 @@ export class RoomPageComponent implements OnInit, OnDestroy {
 
   openEditRoom() {
     this.dialog.open(EditRoomDialogComponent, {
-      data: this.room
+      data: { ...this.room }
     })
   }
 

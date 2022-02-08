@@ -75,8 +75,8 @@ export class FireService {
       stepEndAt: null,
       maxRounds: 3,
       round: 0,
-      maxTimeStep1: 180,
-      maxTimeStep2: 180,
+      maxTimeStep1: 999,
+      maxTimeStep2: 999,
       maxTimeStep3: 15,
       createdAt: firebase.Timestamp.now()
     });
