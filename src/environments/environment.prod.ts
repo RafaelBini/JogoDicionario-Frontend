@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiHost: 'https://jogo-dicionario.herokuapp.com',
+  apiHost: 'https://web-production-310e.up.railway.app',
   firebase: {
     apiKey: 'AIzaSyCkYvMVRy4ycriJQfliR9sNJiICPTVlIhU',
     authDomain: "jogo-dicionario.firebaseapp.com",
