@@ -1,0 +1,45 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-around;
+    width: 200px;
+    height: 300px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.main>div {
+    height: 50px;
+    width: 50px;
+
+}
+
+.img_container {
+    position: relative;
+    width: fit-content;
+}
+
+.img_container>div>img {
+    position: absolute;
+    top: -53px;
+}
+
+.score {
+    width: 100%;
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.first {
+    background-color: gold;
+}
+
+.second {
+    background-color: silver;
+}
+
+.third {
+    background-color: burlywood;
+}

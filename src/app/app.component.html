@@ -1,1 +1,4 @@
-<router-outlet></router-outlet>
+<div *ngIf="isLoading" class="main_container" style="padding-top: 70px;">
+    <app-loading></app-loading>
+</div>
+<router-outlet *ngIf="!isLoading"></router-outlet>

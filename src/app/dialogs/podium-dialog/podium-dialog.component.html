@@ -7,6 +7,20 @@
 <div *ngIf="room.users[2]">
     Terceiro: {{room.users[2].name}}
 </div>
+<div class="main">
+    <div class="second img_container" [style.height]="podiumDetails[1].height">
+        <div><img [src]="room.users[1].imgUrl" class="avatar_medium"></div>
+        <div class="score">{{room.users[1].score}}</div>
+    </div>
+    <div class="first img_container" [style.height]="podiumDetails[0].height">
+        <div><img [src]="room.users[0].imgUrl" class="avatar_medium"></div>
+        <div class="score">{{room.users[0].score}}</div>
+    </div>
+    <div *ngIf="room.users[2]" class="third img_container" [style.height]="podiumDetails[2].height">
+        <div><img [src]="room.users[2].imgUrl" class="avatar_medium"></div>
+        <div class="score">{{room.users[2].score}}</div>
+    </div>
+</div>
 <button mat-icon-button mat-dialog-close class="btn_dialog_close">
     <mat-icon>cancel</mat-icon>
 </button>
