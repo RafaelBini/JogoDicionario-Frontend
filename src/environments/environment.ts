@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiHost: 'http://localhost:3000',
+  apiHost: 'http://localhost:3300',
   firebase: {
     apiKey: "AIzaSyC63KnBVp3obyuSbQEmst6EHNwEU9r8moM",
     authDomain: "jogo-dicionario-dev.firebaseapp.com",

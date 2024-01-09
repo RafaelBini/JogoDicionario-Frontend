@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiHost: 'https://web-production-310e.up.railway.app',
+  apiHost: 'https://fifasbroken.binisoft.com.br:3300',
   firebase: {
     apiKey: 'AIzaSyCkYvMVRy4ycriJQfliR9sNJiICPTVlIhU',
     authDomain: "jogo-dicionario.firebaseapp.com",
